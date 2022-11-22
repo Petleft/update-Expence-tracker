@@ -195,10 +195,10 @@ def celkem():
     r = (c.fetchone()[0])
     if r == None:
         celkem_label = Label(root, text="0 Kč")
-        celkem_label.grid(row=19, column=7)
+        celkem_label.grid(row=20, column=7)
     else:
         celkem_label = Label(root, text=str(r) + " Kč")
-        celkem_label.grid(row=19, column=7)
+        celkem_label.grid(row=20, column=7)
 
     #výpočet pro Jídlo
     sum_celkem1 = "select sum(cena) from expensses WHERE typ_produktu == 'Jídlo' "
@@ -269,6 +269,17 @@ def celkem():
     else:
         celkem_zabava_label = Label(root, text=str(p) + " Kč")
         celkem_zabava_label.grid(row=16, column=7)
+
+    # výpočet pro Nezařazeno
+    sum_celkem1 = "select sum(cena) from expensses WHERE typ_produktu == '----' "
+    c.execute(sum_celkem1)
+    h = (c.fetchone()[0])
+    if h == None:
+        celkem_nezařazeno_label = Label(root, text="0 Kč")
+        celkem_nezařazeno_label.grid(row=19, column=7)
+    else:
+        celkem_nezařazeno_label = Label(root, text=str(h) + " Kč")
+        celkem_nezařazeno_label.grid(row=19, column=7)
 
 
 
@@ -422,7 +433,7 @@ l.config(font=("Courier", 12))
 Celkova_utrata="""
 celková"""
 
-l.grid(row=19,column=6)
+l.grid(row=20,column=6)
 #T.insert(END, Celkova_utrata)
 #T.grid(row=19, column=7)
 
@@ -497,6 +508,18 @@ Zahrada_útrata = """útrata"""
 l.grid(row=18,column=6)
 #E.insert(END, Zahrada_útrata)
 #E.grid(row=18, column=7)
+
+#Útrata nezařazeno -------------------------------------------------------------
+N = Text(root, height=1, width=6)
+
+# Create label
+l = Label(root, text="Nezařazeno:")
+l.config(font=("Courier", 12))
+
+Nezařazeno_útrata = """útrata"""
+l.grid(row=19,column=6)
+#N.insert(END, Jídlo_útrata)
+#N.grid(row=13, column=7)
 
 #Útrata hlavní nadpis -------------------------------------------------------------
 F = Text(root, height=1, width=6)

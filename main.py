@@ -224,7 +224,7 @@ def celkem():
         celkem_oblecení_label.grid(row=14, column=7)
 
 
-    #Výpočet pro elektroniku
+    #Výpočet pro elektroniku.
     sum_celkem3 = "select sum(cena) from expensses WHERE typ_produktu == 'Elektronika' "
     c.execute(sum_celkem3)
     u = (c.fetchone()[0])
@@ -504,12 +504,6 @@ F = Text(root, height=1, width=6)
 # Create label
 l = Label(root, text="Výše útraty ve vybraném období:")
 l.config(font=("Courier", 12))
-
-
-
-
-
-
 
 
 root.mainloop()
